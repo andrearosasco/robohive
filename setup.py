@@ -75,6 +75,7 @@ setup(
         'console_scripts': [
             'robohive_init = robohive_init:fetch_simhive',
             'robohive_clean = robohive_init:clean_simhive',
+            'robohive_teleop = tutorials:ee_teleop_oculus:main' 
         ],
     },
 )
