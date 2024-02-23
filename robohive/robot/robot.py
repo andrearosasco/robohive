@@ -10,6 +10,7 @@ from robohive.utils.quat_math import quat2euler
 from robohive.utils.prompt_utils import prompt, Prompt
 import time
 import numpy as np
+import rclpy
 from collections import deque
 import os
 np.set_printoptions(precision=4)
@@ -51,6 +52,8 @@ class Robot():
                 random_generator = None,    # random number generator
                 **kwargs,
             ):
+
+        rclpy.init()
 
         if kwargs != {}:
             prompt("Warning: Unused kwargs found: {}".format(kwargs), type=Prompt.WARN)
