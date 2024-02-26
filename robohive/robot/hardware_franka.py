@@ -66,7 +66,7 @@ class FrankaArm(Node):
         rclpy.shutdown()
 
     def reset(self, reset_pos=None, time_to_go=5):
-        home = np.array([0.035972153270453736, 0.26206892568271034, -0.09772715938167076, -1.3994067706311577, -0.009183868408203125, 1.6383829876946538, -0.011601826569581752])
+        home = np.array([0.0, 0.3, 0.0, -1.15, 0.0, 1.5, 0.0])
 
         # Use registered controller
         q_current = self.get_sensors()['joint_pos']
