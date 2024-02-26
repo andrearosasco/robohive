@@ -17,7 +17,6 @@ class Robotiq(Node):
     gripper_state = None
 
     def __init__(self, **kwargs):
-        return
         super().__init__('robotiq_action_client')
         self._action_client = ActionClient(self, GripperCommand, '/robotiq_gripper_controller/gripper_cmd')
 
