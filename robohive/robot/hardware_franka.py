@@ -39,10 +39,10 @@ class FrankaArm(Node):
         return self.future.result()
 
 
-    def apply_commands(self, q_desired=None, kp=None, kd=None):
+    def apply_commands(self, q_desired=None, kp=None, kd=None, gain=4.):
         request = FrankaArm.interfaces['apply_commands'].Request()
 
-        request.command = PandaCommand(position=q_desired)
+        request.command = PandaCommand(position=q_desired, gain=gain)
         self.future = self.client_names['apply_commands'].call_async(request)
 
         return
@@ -75,7 +75,7 @@ class FrankaArm(Node):
         waypoints =  generate_joint_space_min_jerk(start=q_current, goal=home, time_to_go=5, dt=dt)
         # reset using min_jerk traj
         for i in range(len(waypoints)):
-            self.apply_commands(q_desired=waypoints[i]['position'])
+            self.apply_commands(q_desired=waypoints[i]['position'], gain=10.)
             time.sleep(dt)
 
     def okay(self):
